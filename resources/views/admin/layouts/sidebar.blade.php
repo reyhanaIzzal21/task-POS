@@ -26,14 +26,26 @@
                     </li>
                     <li class="nav-small-cap">
                         <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                        <span class="hide-menu">MAIN</span>
+                        <span class="hide-menu">CONTENT</span>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="./ui-buttons.html" aria-expanded="false">
+                        <a class="sidebar-link" href="{{ route('products.index') }}" aria-expanded="false">
                             <span>
                                 <i class="ti ti-article"></i>
                             </span>
-                            <span class="hide-menu">Buttons</span>
+                            <span class="hide-menu">Product</span>
+                        </a>
+                    </li>
+                    <li class="nav-small-cap">
+                        <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                        <span class="hide-menu">POS</span>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="{{ route('products.index') }}" aria-expanded="false">
+                            <span>
+                                <i class="ti ti-article"></i>
+                            </span>
+                            <span class="hide-menu">Kasir</span>
                         </a>
                     </li>
                 </ul>
