@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SaleController;
+use App\Http\Controllers\CashierController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 
@@ -20,6 +22,14 @@ Route::middleware('auth')->group(function () {
 
         // products
         Route::resource('products', ProductController::class);
+
+        // sales
+        Route::resource('sales', SaleController::class);
+
+        // cashier
+        Route::get('cashier', [CashierController::class, 'index'])->name('cashier.index');
+        Route::post('cashier/checkout', [CashierController::class, 'checkout'])->name('cashier.checkout');
+        Route::get('/cashier/receipt/{id}', [CashierController::class, 'receipt'])->name('cashier.receipt');
     });
 });
 
