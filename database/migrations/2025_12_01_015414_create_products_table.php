@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('product_name', 255);
             $table->decimal('price', 10, 2)->default(0);
             $table->integer('stock')->default(0);
+            $table->string('image');
             $table->timestamps();
         });
     }
