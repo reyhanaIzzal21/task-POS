@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Sale;
 use App\Models\User;
 use App\Models\Customer;
 use Illuminate\Http\Request;
@@ -48,21 +49,26 @@ class CustomerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(User $user)
+    public function show($id)
     {
-        // Ambil data sales customer dengan relasi product details
-        $sales = $user->sales()->with('saleDetails.product')->latest()->get();
+        $user = \App\Models\User::findOrFail($id);
 
-        // Hitung total pembelian
+        $sales = Sale::where('customer_id', $user->id)
+            ->with(['saleDetails.product'])
+            ->latest()
+            ->get();
+
         $totalPurchases = $sales->count();
 
-        // Hitung total amount
         $totalAmount = $sales->sum('total_price');
 
-        // Hitung total items yang dibeli
         $totalItems = $sales->flatMap(function ($sale) {
             return $sale->saleDetails;
         })->sum('product_quantity');
+
+        // Alternatif (lebih cepat jika banyak data): hitung langsung di DB
+        // $saleIds = $sales->pluck('id');
+        // $totalItems = SaleDetail::whereIn('sale_id', $saleIds)->sum('product_quantity');
 
         return view('admin.pages.customers.show', compact('user', 'sales', 'totalPurchases', 'totalAmount', 'totalItems'));
     }

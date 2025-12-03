@@ -229,7 +229,7 @@
                                             <h6 class="fw-semibold mb-0">Total Terbeli</h6>
                                         </th>
                                         <th class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-0">Frekuensi</h6>
+                                            <h6 class="fw-semibold mb-0">Frekuensi Pembelian</h6>
                                         </th>
                                     </tr>
                                 </thead>

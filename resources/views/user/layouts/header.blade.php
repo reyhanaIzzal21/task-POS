@@ -20,6 +20,14 @@
                             <li class="nav-item"><a class="btn btn-custom"
                                     href="{{ route('dashboard.admin') }}">Dashboard</a></li>
                         @else
+                            {{-- display point user --}}
+                            @if (Auth::user()->point)
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        Points: <span class="badge bg-warning text-dark">{{ Auth::user()->point }}</span>
+                                    </a>
+                                </li>
+                            @endif
                             <li class="nav-item"><a class="btn btn-custom" href="{{ route('profile.edit') }}">Dashboard</a>
                             </li>
                         @endif

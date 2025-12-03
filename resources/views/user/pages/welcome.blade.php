@@ -15,7 +15,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="hero-image">
-                        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600" alt="Coffee">
+                        <img src="{{ asset('assets/images/backgrounds/hero.jpg') }}" alt="Coffee" class="w-600">
                     </div>
                 </div>
             </div>
@@ -188,7 +188,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1559305616-3107f14f8f27?w=400" alt="Barista">
+                        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400" alt="Barista">
                         <div class="gallery-overlay">
                             <i class="fas fa-search-plus"></i>
                         </div>
@@ -213,7 +213,8 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6">
                         <div class="membership-image">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2bpvC6pcISm3RW7dmF0abvtI_MCukCOByTA&s?w=500" alt="Membership">
+                            <img src="{{ asset('assets/images/backgrounds/cta.jpg') }}"
+                                alt="Membership" class="w-500">
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -281,8 +282,10 @@
                             @auth
                                 <p class="membership-status">✓ Anda sudah menjadi member kami! Terima kasih.</p>
                             @else
-                                <a href="{{ route('register') }}" class="btn btn-custom btn-membership">Daftar Member Sekarang</a>
-                                <p class="membership-login">Sudah punya akun? <a href="{{ route('login') }}">Login di sini</a></p>
+                                <a href="{{ route('register') }}" class="btn btn-custom btn-membership">Daftar Member
+                                    Sekarang</a>
+                                <p class="membership-login">Sudah punya akun? <a href="{{ route('login') }}">Login di sini</a>
+                                </p>
                             @endauth
                         @endif
                     </div>

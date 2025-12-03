@@ -48,4 +48,12 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * Get all sales for this user (member)
+     */
+    public function sales()
+    {
+        return $this->hasMany(Sale::class, 'customer_id');
+    }
 }

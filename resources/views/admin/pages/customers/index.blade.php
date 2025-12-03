@@ -63,7 +63,7 @@
                                     <td>
                                         <span class="badge rounded-pill text-dark"
                                             style="background:#fff3cd;border:1px solid #ffe8a1;">
-                                            {{ $customer->points ?? 0 }}
+                                            {{ $customer->point ?? 0 }}
                                         </span>
                                     </td>
                                     <td>{{ $customer->created_at->format('d M Y') }}</td>
