@@ -202,7 +202,7 @@
             @if ($sales->hasPages())
                 <div class="card-footer bg-white border-top p-3">
                     <div class="d-flex justify-content-end">
-                        {{ $sales->links() }}
+                        {{ $sales->withQueryString()->links('pagination::bootstrap-5') }}
                     </div>
                 </div>
             @endif

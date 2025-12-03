@@ -14,6 +14,13 @@ class ProductController extends Controller
         return view('admin.pages.products.index', compact('products'));
     }
 
+    public function welcome()
+    {
+        // Get 6 random products for landing page
+        $products = Product::inRandomOrder()->limit(6)->get();
+        return view('user.pages.welcome', compact('products'));
+    }
+
     public function create()
     {
         return view('admin.pages.products.create');

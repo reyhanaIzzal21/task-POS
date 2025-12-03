@@ -88,7 +88,7 @@
                     <div class="text-muted small">Menampilkan {{ $user->count() }} item</div>
                     <div>
                         @if (method_exists($user, 'links'))
-                            {{ $user->withQueryString()->links() }}
+                            {{ $user->withQueryString()->links('pagination::bootstrap-5') }}
                         @endif
                     </div>
                 </div>

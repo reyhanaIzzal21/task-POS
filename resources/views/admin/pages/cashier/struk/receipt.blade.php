@@ -172,7 +172,7 @@
     <div class="receipt-container">
         <!-- Header -->
         <div class="receipt-header">
-            <div class="cafe-name">CR /</div>
+            <div class="cafe-name">Urban Starlet</div>
             <div class="cafe-info">
                 Jl. Kahuripan No.1, Klojen, Kec. Klojen, Kota Malang, Jawa Timur 65119
             </div>
@@ -240,7 +240,7 @@
         <div class="receipt-footer">
             <div class="footer-thanks">Terima Kasih!</div>
             <div>Semoga hari Anda menyenangkan</div>
-            <div style="margin-top: 10px;">www.cr-cafe.com</div>
+            <div style="margin-top: 10px;">www.urban_starlet-cafe.com</div>
         </div>
     </div>
 

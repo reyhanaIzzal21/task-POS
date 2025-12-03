@@ -2,9 +2,7 @@
         <!-- Sidebar scroll-->
         <div>
             <div class="brand-logo d-flex align-items-center justify-content-center">
-                <a href="./index.html" class="text-nowrap">
-                    <h1 class="fw-extrabold">Urban Starlet</h1>
-                </a>
+                <a class="navbar-brand" href="/"><span>Urban</span> Starlet</a>
                 <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
                     <i class="ti ti-x fs-8"></i>
                 </div>
@@ -70,3 +68,26 @@
         </div>
         <!-- End Sidebar scroll-->
     </aside>
+
+    <style>
+        :root {
+            --primary-blue: #0c19d3;
+            --secondary-blue: #0c19d3;
+            --accent-orange: #ff7300;
+            --light-orange: #f36709;
+            --white: #ffffff;
+            --light-gray: #f8f9fa;
+        }
+
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-blue) !important;
+            letter-spacing: 1px;
+        }
+
+        .navbar-brand span {
+            color: var(--accent-orange);
+        }
+    </style>

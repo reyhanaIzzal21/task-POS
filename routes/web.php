@@ -7,9 +7,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CustomerController;
 
-Route::get('/', function () {
-    return view('user.pages.welcome');
-});
+// Landing page with 6 random products
+Route::get('/', [ProductController::class, 'welcome'])->name('welcome');
 
 
 // route middleware group for admin

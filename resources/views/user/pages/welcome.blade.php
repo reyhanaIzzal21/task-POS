@@ -40,14 +40,14 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-6 mb-2">
                             <div class="feature-box">
                                 <i class="fas fa-coffee feature-icon"></i>
                                 <h4>Premium Coffee</h4>
                                 <p>Biji kopi pilihan dari berbagai daerah di Indonesia</p>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 mb-2">
                             <div class="feature-box">
                                 <i class="fas fa-wifi feature-icon"></i>
                                 <h4>Free WiFi</h4>
@@ -82,66 +82,28 @@
                 <p class="mt-3">Signature drinks dan makanan yang wajib kamu coba!</p>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="menu-card">
-                        <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400" alt="Espresso">
-                        <div class="menu-card-body">
-                            <h4>Signature Espresso</h4>
-                            <p>Double shot espresso dengan crema sempurna</p>
-                            <span class="price">Rp 28.000</span>
+                @forelse($products as $product)
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="menu-card">
+                            @if($product->image)
+                                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->product_name }}" style="width: 100%; height: 250px; object-fit: cover;">
+                            @else
+                                <img src="https://via.placeholder.com/400x250?text={{ urlencode($product->product_name) }}" alt="{{ $product->product_name }}" style="width: 100%; height: 250px; object-fit: cover;">
+                            @endif
+                            <div class="menu-card-body">
+                                <h4>{{ $product->product_name }}</h4>
+                                <p>Produk pilihan Urban Starlet yang berkualitas premium</p>
+                                <span class="price">Rp {{ number_format($product->price, 0, ',', '.') }}</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="menu-card">
-                        <img src="https://images.unsplash.com/photo-1517487881594-2787fef5ebf7?w=400" alt="Latte">
-                        <div class="menu-card-body">
-                            <h4>Urban Latte</h4>
-                            <p>Creamy latte dengan latte art yang cantik</p>
-                            <span class="price">Rp 35.000</span>
+                @empty
+                    <div class="col-12">
+                        <div class="alert alert-info text-center">
+                            <p>Belum ada produk yang tersedia. Silakan kembali nanti!</p>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="menu-card">
-                        <img src="https://images.unsplash.com/photo-1578314675249-a6910f80cc4e?w=400" alt="Matcha">
-                        <div class="menu-card-body">
-                            <h4>Starlet Matcha</h4>
-                            <p>Matcha latte premium dengan foam tebal</p>
-                            <span class="price">Rp 38.000</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="menu-card">
-                        <img src="https://images.unsplash.com/photo-1558326567-98ae2405596b?w=400" alt="Croissant">
-                        <div class="menu-card-body">
-                            <h4>Butter Croissant</h4>
-                            <p>Croissant renyah dengan butter premium</p>
-                            <span class="price">Rp 25.000</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="menu-card">
-                        <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=400" alt="Pasta">
-                        <div class="menu-card-body">
-                            <h4>Aglio Olio Pasta</h4>
-                            <p>Pasta klasik dengan twist modern</p>
-                            <span class="price">Rp 45.000</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="menu-card">
-                        <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=400" alt="Cake">
-                        <div class="menu-card-body">
-                            <h4>Tiramisu Cake</h4>
-                            <p>Dessert favorit dengan rasa autentik</p>
-                            <span class="price">Rp 32.000</span>
-                        </div>
-                    </div>
-                </div>
+                @endforelse
             </div>
         </div>
     </section>
