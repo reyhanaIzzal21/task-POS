@@ -16,6 +16,11 @@ class ProfileController extends Controller
      */
     public function index(): View
     {
+        return view('user.pages.welcome');
+    }
+
+    public function indexAdmin(): View
+    {
         return view('admin.pages.dashboard');
     }
 

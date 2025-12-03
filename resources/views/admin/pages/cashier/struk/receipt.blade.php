@@ -186,7 +186,7 @@
             </div>
             <div>
                 <span>Tanggal</span>
-                <span>{{ $sale->sale_date->format('d/m/Y H:i') }}</span>
+                <span>{{ $sale->created_at->format('d/m/Y H:i') }}</span>
             </div>
             <div>
                 <span>Kasir</span>

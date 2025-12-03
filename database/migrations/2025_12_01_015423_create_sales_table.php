@@ -16,7 +16,7 @@ return new class extends Migration
             $table->date('sale_date');
             $table->decimal('total_price', 10, 2)->default(0);
             $table->foreignId('customer_id')->constrained('customers')->cascadeOnDelete();
-
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->decimal('subtotal', 10, 2)->default(0);
             $table->decimal('tax_amount', 10, 2)->default(0);
             $table->decimal('paid_amount', 10, 2)->default(0);

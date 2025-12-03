@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 
@@ -10,10 +11,23 @@ class CustomerController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $query = User::whereDoesntHave('roles', function ($q) {
+            $q->where('name', 'admin');
+        });
+
+        if ($request->has('search') && $request->search) {
+            $s = $request->search;
+            $query->where(function ($q) use ($s) {
+                $q->where('name', 'like', "%{$s}%")
+                    ->orWhere('email', 'like', "%{$s}%");
+            });
+        }
+        $user = $query->orderBy('created_at', 'desc')->paginate(10);
+        return view('admin.pages.customers.index', compact('user'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -34,9 +48,23 @@ class CustomerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Customer $customer)
+    public function show(User $user)
     {
-        //
+        // Ambil data sales customer dengan relasi product details
+        $sales = $user->sales()->with('saleDetails.product')->latest()->get();
+
+        // Hitung total pembelian
+        $totalPurchases = $sales->count();
+
+        // Hitung total amount
+        $totalAmount = $sales->sum('total_price');
+
+        // Hitung total items yang dibeli
+        $totalItems = $sales->flatMap(function ($sale) {
+            return $sale->saleDetails;
+        })->sum('product_quantity');
+
+        return view('admin.pages.customers.show', compact('user', 'sales', 'totalPurchases', 'totalAmount', 'totalItems'));
     }
 
     /**
